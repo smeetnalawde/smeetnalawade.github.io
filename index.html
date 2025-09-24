@@ -785,5 +785,35 @@
             evt.currentTarget.className += " active";
         }
     </script>
+    <script>
+    function openSkill(evt, skillName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("skills-tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tab-button");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(skillName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+    function openExperience(evt, experienceType) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("experience-tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].className = tabcontent[i].className.replace(" active", "");
+        }
+        tablinks = document.getElementsByClassName("experience-tab-button");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(experienceType).className += " active";
+        evt.currentTarget.className += " active";
+    }
+</script>
 </body>
 </html>
+
