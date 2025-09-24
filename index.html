@@ -1,95 +1,647 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smeet Nalawade - Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* --- Reset & Base --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background: #f9f9f9; }
-        a { color: #0073e6; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-
-        /* --- Layout --- */
-        header { background: #0073e6; color: white; padding: 2rem 1rem; text-align: center; }
-        header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
-        header p { font-size: 1.2rem; }
-
-        nav { margin-top: 1rem; }
-        nav a { margin: 0 1rem; font-weight: bold; color: white; }
-
-        section { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
-        section h2 { margin-bottom: 1rem; color: #0073e6; }
-        
-        .section-content { display: grid; gap: 1.5rem; }
-        .grid-3-col { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
-        .grid-2-col { grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); }
-
-        ul { list-style: none; }
-        ul li { margin: 0.5rem 0; }
-
-        footer { text-align: center; background: #333; color: white; padding: 1rem; margin-top: 2rem; }
-        footer a { color: #ffcc00; }
-
-        /* --- Card & Icon Styling --- */
-        .card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+        /* --- General & Base Styles --- */
+        :root {
+            --primary-color: #ff6a88;
+            --secondary-color: #ff99ac;
+            --accent-color: #8ac0ff;
+            --card-bg: #ffffff;
+            --text-color: #333;
+            --dark-text: #000;
         }
-        .card:hover { transform: translateY(-5px); }
-        .card h3 { color: #0056b3; margin-bottom: 0.5rem; }
-        .card .meta { font-size: 0.9em; color: #666; margin-bottom: 1rem; }
-        .card .meta span { margin-right: 1rem; }
 
-        .skills-list { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
-        .skill-tag { background: #e0eaff; color: #0056b3; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8em; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1rem; }
-        .social-link { font-size: 2rem; color: #0073e6; transition: color 0.3s; }
-        .social-link:hover { color: #0056b3; }
-        .social-link.github { color: #333; }
-        .social-link.linkedin { color: #0e76a8; }
-        .social-link.email { color: #d44638; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: linear-gradient(135deg, #a7e0e7, #ff99ac, #ff6a88);
+            background-size: cover;
+            min-height: 100vh;
+        }
 
-        .experience-card h4 { color: #555; font-size: 1.1em; margin-bottom: 0.5rem; }
-        .experience-card ul { margin-left: 1rem; }
-        .experience-card ul li { list-style: disc; margin-bottom: 0.5rem; }
+        /* --- Layout & Structure --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
 
-        .certificate-card img { max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 1rem; }
+        .section {
+            padding: 4rem 0;
+        }
+
+        .content-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+            margin: 2rem 0;
+        }
+
+        /* --- Header & Navigation --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--dark-text);
+        }
+
+        .navbar-links a {
+            color: var(--dark-text);
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .navbar-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .navbar .contact-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .navbar .contact-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 6rem 0;
+            text-align: center;
+            flex-direction: column;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-text);
+        }
+
+        .hero h2 {
+            font-size: 1.2rem;
+            font-weight: normal;
+            margin-bottom: 2rem;
+            color: var(--text-color);
+        }
+
+        .hero-buttons .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0 0.5rem;
+        }
+
+        .hero-buttons .btn-download {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .hero-buttons .btn-contact {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            background-color: transparent;
+        }
+
+        .social-icons a {
+            color: var(--text-color);
+            margin: 1.5rem 0.75rem 0;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- About Section --- */
+        .about .content-card h3 {
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        /* --- Work Experience & Projects --- */
+        .work-card h4, .project-card h4 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .meta {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .meta span {
+            margin-right: 1rem;
+        }
+
+        .card-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .skill-tag {
+            background: #e0eaff;
+            color: #0056b3;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8em;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 1.5rem 0;
+            color: var(--text-color);
+        }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>👋 Hi, I'm Smeet Nalawade</h1>
-        <p>Master’s in Data Science | Aspiring Data Scientist</p>
-        <nav>
+    <nav class="navbar">
+        <div class="logo">Smeet Nalawade</div>
+        <div class="navbar-links">
             <a href="#about">About</a>
-            <a href="#projects">Projects</a>
             <a href="#experience">Experience</a>
-            <a href="#certifications">Certificates</a>
+            <a href="#projects">Projects</a>
+            <a href="#certifications">Certifications</a>
             <a href="#contact">Contact</a>
-        </nav>
-    </header>
+        </div>
+        <a href="#contact" class="contact-btn">Contact Me</a>
+    </nav>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <div class="section-content grid-2-col">
-            <div class="card">
-                <h3>Bio</h3>
-                <p>
-                    I’m a Data Science Master’s student at Stevens Institute of Technology [cite: 7] with
-                    hands-on experience in Machine Learning, Data Analysis, and Predictive Modeling.
-                    I enjoy solving complex problems and building data-driven solutions in fields like
-                    finance and healthcare.
-                </p>
+    <section class="section hero">
+        <div class="container">
+            <h1>Hi, I'm Smeet Nalawade</h1>
+            <h2>Master’s in Data Science | Aspiring Data Scientist</h2>
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-download">Download CV</a>
+                <a href="#contact" class="btn btn-contact">Contact Me</a>
             </div>
-            <div class="card">
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/YOUR-LINKEDIN"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/YOUR-GITHUB"><i class="fab fa-github"></i></a>
+                <a href="mailto:smeetnalawade@email.com"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <div class="content-card">
+                <h3>Introduction</h3>
+                <p>
+                    I’m a Master’s student in Data Science at Stevens Institute of Technology, with hands-on experience in Machine Learning, Data Analysis, and Predictive Modeling. I enjoy solving complex problems and building data-driven solutions in fields like finance and healthcare. My professional journey combines technical expertise with a passion for problem-solving, and I have dedicated my career to developing data-driven solutions that solve real business problems.
+                </p>
+                <br>
+                <h3>My Skills</h3>
+                <div class="skills-list">
+                    <span class="skill-tag">Python</span>
+                     <span class="skill-tag">R</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Machine Learning</span>
+                    <span class="skill-tag">Tableau</span>
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">Pandas</span>
+                    <span class="skill-tag">NumPy</span>
+                    <span class="skill-tag">TensorFlow</span>
+                    <span class="skill-tag">PyTorch</span>
+                    <span class="skill-tag">Scikit-learn</span>
+                    <span class="skill-tag">Azure</span>
+                    <span class="skill-tag">AWS</span>
+                    <span class="skill-tag">Snowflake</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="section">
+    <div class="container">
+        <h2 style="text-align: center;">Work Experience</h2>
+        <div class="card-list">
+            <div class="content-card work-card">
+                <h4>Data Analyst | Veloce Tech-Insight</h4>
+                <div class="meta">
+                    <span>August 2023 - July 2024</span>
+                </div>
+                <div class="tech-stack-section">
+                    <h4>Tools & Technologies</h4>
+                    <div class="skills-list">
+                        <span class="skill-tag">Python (Pandas, sched, NumPy, Scikit-learn)</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Databricks</span>
+                        <span class="skill-tag">Snowflake</span>
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">Azure</span>
+                        <span class="skill-tag">GCP</span>
+                        <span class="skill-tag">Tableau</span>
+                    </div>
+                </div>
+                <ul>
+                    <li>Developed real-time IoT data pipelines ingesting over **1M** smart city sensor records, enabling 24/7 monitoring and reducing false alarms by **25%**.</li>
+                    <li>Collaborated with a government smart agriculture program to deliver data-driven recommendations that supported farmers in over **10** rural regions.</li>
+                    <li>Established and implemented daily data ingestion and reporting workflows using Python and SQL, cutting manual reporting time by **40%**.</li>
+                    <li>Refined, pre-processed, and performed feature engineering on over **100K** labeled datasets to build ML-based flood prediction models, enhancing early warning accuracy by **30%**.</li>
+                </ul>
+            </div>
+
+            <div class="content-card work-card">
+                <h4>Data Science & Analytics Intern - Healthcare IT | Manorama Infosolutions</h4>
+                <div class="meta">
+                    <span>January 2023 - June 2023</span>
+                </div>
+                <div class="tech-stack-section">
+                    <h4>Tools & Technologies</h4>
+                    <div class="skills-list">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Power BI</span>
+                        <span class="skill-tag">Regression</span>
+                        <span class="skill-tag">Random Forest</span>
+                    </div>
+                </div>
+                <ul>
+                    <li>Analyzed and visualized over **100K** hospital and insurance records, uncovering patient care and operational inefficiencies.</li>
+                    <li>Streamlined data pipelines by performing data cleaning and preprocessing, reducing inconsistencies by **25%** and enabling more reliable reporting.</li>
+                    <li>Constructed and tested predictive models for appointment scheduling and claims fraud detection, achieving up to **82%** accuracy in pilot evaluations.</li>
+                </ul>
+            </div>
+
+            <div class="content-card work-card">
+                <h4>Data Science Intern | Comtranse Technology</h4>
+                <div class="meta">
+                    <span>June 2022 - September 2022</span>
+                </div>
+                <div class="tech-stack-section">
+                    <h4>Tools & Technologies</h4>
+                    <div class="skills-list">
+                        <span class="skill-tag">Power BI</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Excel</span>
+                        <span class="skill-tag">Python (Pandas, openpyxl)</span>
+                    </div>
+                </div>
+                <ul>
+                    <li>Delivered and deployed over **5** interactive dashboards in Power BI to track regional sales performance and customer retention.</li>
+                    <li>Cleaned, standardized, and validated over **100K** transaction records, improving reporting accuracy and reducing turnaround time by **30%**.</li>
+                    <li>Streamlined weekly sales and customer reports with Python, reducing manual reporting effort by **35%**.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+    
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 style="text-align: center;">Projects</h2>
+            <div class="card-list">
+                <div class="content-card project-card">
+                    <h4>Quantitative Stock Forecasting System</h4>
+                    <p>Developed an end-to-end ML pipeline that extracts and cleans stock, sentiment, macro, and fundamental data from multiple APIs. Trained XGBoost/LSTM models for forecasting and delivered insights via Power BI dashboards.</p>
+                    <div class="skills-list">
+                        <span class="skill-tag">Python</span><span class="skill-tag">XGBoost</span><span class="skill-tag">Power BI</span>
+                    </div>
+                </div>
+
+                <div class="content-card project-card">
+                    <h4>Financial Stress & Default Risk Predictor</h4>
+                    <p>Devised a risk prediction system using satellite imagery and ESG NLP signals to forecast corporate distress and defaults. Automated data ingestion and ML modeling to visualize firm-level risk insights.</p>
+                    <div class="skills-list">
+                        <span class="skill-tag">Python</span><span class="skill-tag">XGBoost</span><span class="skill-tag">NLP</span>
+                    </div>
+                </div>
+
+                <div class="content-card project-card">
+                    <h4>Multi-Modal Brain Tumor Segmentation</h4>
+                    <p>Built a 3D U-Net pipeline on 1TB+ MRI data for multi-modal tumor segmentation. Managed the end-to-end ML pipeline, including data acquisition, preprocessing, and model evaluation.</p>
+                    <div class="skills-list">
+                        <span class="skill-tag">TensorFlow</span><span class="skill-tag">Python</span>
+                    </div>
+                </div>
+
+                <div class="content-card project-card">
+                    <h4>Predictive Analytics for Emergency Response</h4>
+                    <p>Queried over 5M records with SQL and modeled resource reallocation, simulating a 15% improvement in emergency response times.</p>
+                    <div class="skills-list">
+                        <span class="skill-tag">SQL</span><span class="skill-tag">Predictive Modeling</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications" class="section">
+        <div class="container">
+            <h2 style="text-align: center;">Certifications</h2>
+            <div class="card-list">
+                <div class="content-card">
+                    <h4>AWS AI Practitioner Certificate</h4>
+                </div>
+                <div class="content-card">
+                    <h4>Google Data Analytics Certificate</h4>
+                </div>
+                <div class="content-card">
+                    <h4>Microsoft Generative AI</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 style="text-align: center;">Contact</h2>
+            <div class="content-card" style="text-align: center;">
+                <p>Let's connect! You can reach me at:</p>
+                <div class="social-icons" style="margin-top: 2rem;">
+                    <a href="mailto:smeetdn14@gmail.com"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/YOUR-LINKEDIN" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/YOUR-GITHUB" target="_blank"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Smeet Nalawade. All rights reserved.</p>
+    </footer>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smeet Nalawade - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* --- General & Base Styles --- */
+        :root {
+            --primary-color: #ff6a88;
+            --secondary-color: #ff99ac;
+            --accent-color: #8ac0ff;
+            --card-bg: #ffffff;
+            --text-color: #333;
+            --dark-text: #000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: linear-gradient(135deg, #a7e0e7, #ff99ac, #ff6a88);
+            background-size: cover;
+            min-height: 100vh;
+        }
+
+        /* --- Layout & Structure --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: 4rem 0;
+        }
+
+        .content-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+            margin: 2rem 0;
+        }
+
+        /* --- Header & Navigation --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--dark-text);
+        }
+
+        .navbar-links a {
+            color: var(--dark-text);
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .navbar-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .navbar .contact-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .navbar .contact-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 6rem 0;
+            text-align: center;
+            flex-direction: column;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-text);
+        }
+
+        .hero h2 {
+            font-size: 1.2rem;
+            font-weight: normal;
+            margin-bottom: 2rem;
+            color: var(--text-color);
+        }
+
+        .hero-buttons .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0 0.5rem;
+        }
+
+        .hero-buttons .btn-download {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .hero-buttons .btn-contact {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            background-color: transparent;
+        }
+
+        .social-icons a {
+            color: var(--text-color);
+            margin: 1.5rem 0.75rem 0;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- About Section --- */
+        .about .content-card h3 {
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        /* --- Work Experience & Projects --- */
+        .work-card h4, .project-card h4 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .meta {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .meta span {
+            margin-right: 1rem;
+        }
+
+        .card-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .skill-tag {
+            background: #e0eaff;
+            color: #0056b3;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8em;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 1.5rem 0;
+            color: var(--text-color);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">Smeet Nalawade</div>
+        <div class="navbar-links">
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#certifications">Certifications</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <a href="#contact" class="contact-btn">Contact Me</a>
+    </nav>
+
+    <section class="section hero">
+        <div class="container">
+            <h1>Hi, I'm Smeet Nalawade</h1>
+            <h2>Master’s in Data Science | Aspiring Data Scientist</h2>
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-download">Download CV</a>
+                <a href="#contact" class="btn btn-contact">Contact Me</a>
+            </div>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/YOUR-LINKEDIN"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/YOUR-GITHUB"><i class="fab fa-github"></i></a>
+                <a href="mailto:smeetnalawade@email.com"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <div class="content-card">
+                <h3>Introduction</h3>
+                <p>
+                    I’m a Data Science Master’s student at Stevens Institute of Technology with hands-on experience in Machine Learning, Data Analysis, and Predictive Modeling. I enjoy solving complex problems and building data-driven solutions in fields like finance and healthcare. My professional journey combines technical expertise with a passion for problem-solving, and I have dedicated my career to developing data-driven solutions that solve real business problems.
+                </p>
+                <br>
                 <h3>My Skills</h3>
                 <div class="skills-list">
                     <span class="skill-tag">Python</span>
@@ -110,151 +662,872 @@
         </div>
     </section>
 
-    ---
-
-    <section id="projects">
-        <h2>Projects</h2>
-        <div class="section-content grid-2-col">
-            <div class="card project-card">
-                <h3>Quantitative Stock Forecasting System</h3>
-                <p>Developed an end-to-end ML pipeline that extracts and cleans stock, sentiment, macro, and fundamental data from multiple APIs (Alpha Vantage, FRED, GNews, Finnhub). Designed features, trained XGBoost/LSTM models for return/signal/volatility forecasting, and automated ETL workflows. Delivered actionable insights via Power BI dashboards connected to PostgreSQL for real-time analytics.</p>
-                <div class="skills-list">
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">XGBoost</span>
-                    <span class="skill-tag">LSTM</span>
-                    <span class="skill-tag">Power BI</span>
-                    <span class="skill-tag">PostgreSQL</span>
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 style="text-align: center;">Work Experience</h2>
+            <div class="card-list">
+                <div class="content-card work-card">
+                    <h4>Data Analyst | Veloce Tech-Insight</h4>
+                    <div class="meta">
+                        <span>August 2023 - July 2024</span>
+                    </div>
+                    <ul>
+                        <li>Developed real-time IoT data pipelines ingesting over 1M smart city sensor records into Databricks, Snowflake, SQL, and cloud platforms (AWS, Azure, GCP), enabling 24/7 monitoring and reducing false alarms by 25%.</li>
+                        <li>Collaborated on a government smart agriculture program, analyzing lot and satellite datasets with Python and Tableau to deliver data-driven recommendations that supported farmers in over 10 rural regions.</li>
+                        <li>Established and implemented daily data ingestion and reporting workflows using Python (Pandas, sched) and SQL queries, cutting manual reporting time by 40%.</li>
+                        <li>Refined, pre-processed, and performed feature engineering on over 100K labeled datasets with Python (NumPy, Scikit-learn) to build features for ML-based flood prediction models, enhancing early warning accuracy by 30%.</li>
+                    </ul>
                 </div>
-                <br>
-                <a href="#">View on GitHub</a> | <a href="#">Live Demo (if any)</a>
-            </div>
 
-            <div class="card project-card">
-                <h3>Financial Stress & Default Risk Predictor (Satellite + ESG)</h3>
-                <p>Devised a risk prediction system using satellite imagery (NASA, Sentinel) and ESG NLP signals (GDELT, Refinitiv) alongside financials to forecast corporate distress and defaults. Automated data ingestion, ML modeling (XGBoost, survival analysis), and Power BI dashboards to visualize firm-level risk insights.</p>
-                <div class="skills-list">
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">XGBoost</span>
-                    <span class="skill-tag">NLP</span>
-                    <span class="skill-tag">Power BI</span>
+                <div class="content-card work-card">
+                    <h4>Data Science & Analytics Intern - Healthcare IT | Manorama Infosolutions</h4>
+                    <div class="meta">
+                        <span>January 2023 - June 2023</span>
+                    </div>
+                    <ul>
+                        <li>Leveraged Python, SQL, and Power BI to analyze and visualize over 100K hospital and insurance records, uncovering patient care and operational inefficiencies.</li>
+                        <li>Streamlined data pipelines by performing data cleaning and preprocessing, reducing inconsistencies by 25% and enabling more reliable reporting for clinical teams.</li>
+                        <li>Constructed and tested predictive models (regression, random forest) for appointment scheduling, patient flow, and claims fraud detection, achieving up to 82% accuracy in pilot evaluations.</li>
+                    </ul>
                 </div>
-                <br>
-                <a href="#">View on GitHub</a> | <a href="#">Live Demo (if any)</a>
-            </div>
 
-            <div class="card project-card">
-                <h3>Multi-Modal Brain Tumor Segmentation and Classification</h3>
-                <p>Built a 3D U-Net pipeline on 1TB+ MRI data with preprocessing, augmentation, and evaluation for multi-modal tumor segmentation. Managed the end-to-end ML pipeline, including data acquisition, preprocessing (normalization, cropping, augmentation), model architecture, training, and evaluation.</p>
-                <div class="skills-list">
-                    <span class="skill-tag">TensorFlow</span>
-                    <span class="skill-tag">Python</span>
+                <div class="content-card work-card">
+                    <h4>Data Science Intern | Comtranse Technology</h4>
+                    <div class="meta">
+                        <span>June 2022 - September 2022</span>
+                    </div>
+                    <ul>
+                        <li>Delivered and deployed over 5 interactive dashboards in Power BI to track regional sales performance and customer retention, enabling data-driven decision-making for senior management.</li>
+                        <li>Cleaned, standardized, and validated over 100K transaction records using SQL and Excel, improving reporting accuracy and reducing turnaround time by 30%.</li>
+                        <li>Streamlined weekly sales and customer reports with Python (Pandas, openpyxl), reducing manual reporting effort by 35%.</li>
+                    </ul>
                 </div>
-                <br>
-                <a href="#">View on GitHub</a> | <a href="#">Live Demo (if any)</a>
-            </div>
-
-            <div class="card project-card">
-                <h3>Predictive Analytics for Emergency Response Optimization</h3>
-                <p>Queried over 5M records with SQL and modeled resource reallocation, simulating a 15% improvement in emergency response times.</p>
-                <div class="skills-list">
-                    <span class="skill-tag">SQL</span>
-                    <span class="skill-tag">Predictive Modeling</span>
-                </div>
-                <br>
-                <a href="#">View on GitHub</a> | <a href="#">Live Demo (if any)</a>
-            </div>
-
-            <div class="card project-card">
-                <h3>Automated Fruit Grading and Classification System</h3>
-                <p>Engineered an OpenCV + Python pipeline on 88K+ fruit images to automate grading with 95% accuracy.</p>
-                <div class="skills-list">
-                    <span class="skill-tag">OpenCV</span>
-                    <span class="skill-tag">Python</span>
-                </div>
-                <br>
-                <a href="#">View on GitHub</a> | <a href="#">Live Demo (if any)</a>
             </div>
         </div>
     </section>
 
-    ---
-
-    <section id="experience">
-        <h2>Work Experience</h2>
-        <div class="section-content">
-            <article class="card experience-card">
-                <h3>Data Analyst | Veloce Tech-Insight</h3>
-                <div class="meta">
-                    <span>August 2023 - July 2024</span>
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 style="text-align: center;">Projects</h2>
+            <div class="card-list">
+                <div class="content-card project-card">
+                    <h4>Quantitative Stock Forecasting System</h4>
+                    <p>Developed an end-to-end ML pipeline that extracts and cleans stock, sentiment, macro, and fundamental data from multiple APIs. Trained XGBoost/LSTM models for forecasting and delivered insights via Power BI dashboards.</p>
+                    <div class="skills-list">
+                        <span class="skill-tag">Python</span><span class="skill-tag">XGBoost</span><span class="skill-tag">Power BI</span>
+                    </div>
                 </div>
-                <ul>
-                    <li>Developed real-time IoT data pipelines ingesting over 1M smart city sensor records into Databricks, Snowflake, SQL, and cloud platforms (AWS, Azure, GCP), enabling 24/7 monitoring and reducing false alarms by 25%.</li>
-                    <li>Collaborated on a government smart agriculture program, analyzing lot and satellite datasets with Python and Tableau to deliver data-driven recommendations that supported farmers in over 10 rural regions.</li>
-                    <li>Established and implemented daily data ingestion and reporting workflows using Python (Pandas, sched) and SQL queries, cutting manual reporting time by 40%.</li>
-                    <li>Refined, pre-processed, and performed feature engineering on over 100K labeled datasets with Python (NumPy, Scikit-learn) to build features for ML-based flood prediction models, enhancing early warning accuracy by 30%.</li>
-                </ul>
-            </article>
 
-            <article class="card experience-card">
-                <h3>Data Science & Analytics Intern - Healthcare IT | Manorama Infosolutions</h3>
-                <div class="meta">
-                    <span>January 2023 - June 2023</span>
+                <div class="content-card project-card">
+                    <h4>Financial Stress & Default Risk Predictor</h4>
+                    <p>Devised a risk prediction system using satellite imagery and ESG NLP signals to forecast corporate distress and defaults. Automated data ingestion and ML modeling to visualize firm-level risk insights.</p>
+                    <div class="skills-list">
+                        <span class="skill-tag">Python</span><span class="skill-tag">XGBoost</span><span class="skill-tag">NLP</span>
+                    </div>
                 </div>
-                <ul>
-                    <li>Leveraged Python, SQL, and Power BI to analyze and visualize over 100K hospital and insurance records, uncovering patient care and operational inefficiencies.</li>
-                    <li>Streamlined data pipelines by performing data cleaning and preprocessing, reducing inconsistencies by 25% and enabling more reliable reporting for clinical teams.</li>
-                    <li>Constructed and tested predictive models (regression, random forest) for appointment scheduling, patient flow, and claims fraud detection, achieving up to 82% accuracy in pilot evaluations.</li>
-                </ul>
-            </article>
 
-            <article class="card experience-card">
-                <h3>Data Science Intern | Comtranse Technology</h3>
-                <div class="meta">
-                    <span>June 2022 - September 2022</span>
+                <div class="content-card project-card">
+                    <h4>Multi-Modal Brain Tumor Segmentation</h4>
+                    <p>Built a 3D U-Net pipeline on 1TB+ MRI data for multi-modal tumor segmentation. Managed the end-to-end ML pipeline, including data acquisition, preprocessing, and model evaluation.</p>
+                    <div class="skills-list">
+                        <span class="skill-tag">TensorFlow</span><span class="skill-tag">Python</span>
+                    </div>
                 </div>
-                <ul>
-                    <li>Delivered and deployed over 5 interactive dashboards in Power BI to track regional sales performance and customer retention, enabling data-driven decision-making for senior management.</li>
-                    <li>Cleaned, standardized, and validated over 100K transaction records using SQL and Excel, improving reporting accuracy and reducing turnaround time by 30%.</li>
-                    <li>Streamlined weekly sales and customer reports with Python (Pandas, openpyxl), reducing manual reporting effort by 35%.</li>
-                </ul>
-            </article>
-        </div>
-    </section>
 
-    ---
-
-    <section id="certifications">
-        <h2>Certifications</h2>
-        <div class="section-content grid-3-col">
-            <div class="card certificate-card">
-                <h3>AWS AI Practitioner Certificate</h3>
-                <p>Amazon Web Services</p>
-            </div>
-            <div class="card certificate-card">
-                <h3>Google Data Analytics Certificate</h3>
-                <p>Google</p>
-            </div>
-            <div class="card certificate-card">
-                <h3>Microsoft Generative AI</h3>
-                <p>Microsoft</p>
+                <div class="content-card project-card">
+                    <h4>Predictive Analytics for Emergency Response</h4>
+                    <p>Queried over 5M records with SQL and modeled resource reallocation, simulating a 15% improvement in emergency response times.</p>
+                    <div class="skills-list">
+                        <span class="skill-tag">SQL</span><span class="skill-tag">Predictive Modeling</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    ---
+    <section id="certifications" class="section">
+        <div class="container">
+            <h2 style="text-align: center;">Certifications</h2>
+            <div class="card-list">
+                <div class="content-card">
+                    <h4>AWS AI Practitioner Certificate</h4>
+                </div>
+                <div class="content-card">
+                    <h4>Google Data Analytics Certificate</h4>
+                </div>
+                <div class="content-card">
+                    <h4>Microsoft Generative AI</h4>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>Let’s connect! 🚀</p>
-        <div class="social-links">
-            <a href="mailto:smeetdn14@gmail.com" class="social-link email" title="Email"><i class="fas fa-envelope"></i></a>
-            <a href="https://www.linkedin.com/in/YOUR-LINKEDIN" target="_blank" class="social-link linkedin" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/YOUR-GITHUB" target="_blank" class="social-link github" title="GitHub"><i class="fab fa-github"></i></a>
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 style="text-align: center;">Contact</h2>
+            <div class="content-card" style="text-align: center;">
+                <p>Let's connect! You can reach me at:</p>
+                <div class="social-icons" style="margin-top: 2rem;">
+                    <a href="mailto:smeetdn14@gmail.com"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/YOUR-LINKEDIN" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/YOUR-GITHUB" target="_blank"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
         </div>
     </section>
 
     <footer>
-        <p>© 2025 Smeet Nalawade | Built with ❤️ using GitHub Pages</p>
+        <p>&copy; 2025 Smeet Nalawade. All rights reserved.</p>
+    </footer>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smeet Nalawade - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* --- General & Base Styles --- */
+        :root {
+            --primary-color: #ff6a88;
+            --secondary-color: #ff99ac;
+            --accent-color: #8ac0ff;
+            --card-bg: #ffffff;
+            --text-color: #333;
+            --dark-text: #000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: linear-gradient(135deg, #a7e0e7, #ff99ac, #ff6a88);
+            background-size: cover;
+            min-height: 100vh;
+        }
+
+        /* --- Layout & Structure --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: 4rem 0;
+        }
+
+        .content-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+            margin: 2rem 0;
+        }
+
+        /* --- Header & Navigation --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--dark-text);
+        }
+
+        .navbar-links a {
+            color: var(--dark-text);
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .navbar-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .navbar .contact-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .navbar .contact-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 6rem 0;
+            text-align: center;
+            flex-direction: column;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-text);
+        }
+
+        .hero h2 {
+            font-size: 1.2rem;
+            font-weight: normal;
+            margin-bottom: 2rem;
+            color: var(--text-color);
+        }
+
+        .hero-buttons .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0 0.5rem;
+        }
+
+        .hero-buttons .btn-download {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .hero-buttons .btn-contact {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            background-color: transparent;
+        }
+
+        .social-icons a {
+            color: var(--text-color);
+            margin: 1.5rem 0.75rem 0;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- About Section --- */
+        .about .content-card h3 {
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        /* --- Work Experience & Projects --- */
+        .work-card h4, .project-card h4 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .meta {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .meta span {
+            margin-right: 1rem;
+        }
+
+        .card-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .skill-tag {
+            background: #e0eaff;
+            color: #0056b3;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8em;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 1.5rem 0;
+            color: var(--text-color);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">Smeet Nalawade</div>
+        <div class="navbar-links">
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#certifications">Certifications</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <a href="#contact" class="contact-btn">Contact Me</a>
+    </nav>
+
+    <section class="section hero">
+        <div class="container">
+            <h1>Hi, I'm Smeet Nalawade</h1>
+            <h2>Master’s in Data Science | Aspiring Data Scientist</h2>
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-download">Download CV</a>
+                <a href="#contact" class="btn btn-contact">Contact Me</a>
+            </div>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/YOUR-LINKEDIN"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/YOUR-GITHUB"><i class="fab fa-github"></i></a>
+                <a href="mailto:smeetnalawade@email.com"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <div class="content-card">
+                <h3>Introduction</h3>
+                <p>
+                    I’m a Data Science Master’s student at Stevens Institute of Technology with hands-on experience in Machine Learning, Data Analysis, and Predictive Modeling. I enjoy solving complex problems and building data-driven solutions in fields like finance and healthcare. My professional journey combines technical expertise with a passion for problem-solving, and I have dedicated my career to developing data-driven solutions that solve real business problems.
+                </p>
+                <br>
+                <h3>My Skills</h3>
+                <div class="skills-list">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Machine Learning</span>
+                    <span class="skill-tag">Tableau</span>
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">Pandas</span>
+                    <span class="skill-tag">NumPy</span>
+                    <span class="skill-tag">TensorFlow</span>
+                    <span class="skill-tag">PyTorch</span>
+                    <span class="skill-tag">Scikit-learn</span>
+                    <span class="skill-tag">Azure</span>
+                    <span class="skill-tag">AWS</span>
+                    <span class="skill-tag">Snowflake</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 style="text-align: center;">Work Experience</h2>
+            <div class="card-list">
+                <div class="content-card work-card">
+                    <h4>Data Analyst | Veloce Tech-Insight</h4>
+                    <div class="meta">
+                        <span>August 2023 - July 2024</span>
+                    </div>
+                    <ul>
+                        <li>Developed real-time IoT data pipelines ingesting over 1M smart city sensor records into Databricks, Snowflake, SQL, and cloud platforms (AWS, Azure, GCP), enabling 24/7 monitoring and reducing false alarms by 25%.</li>
+                        <li>Collaborated on a government smart agriculture program, analyzing lot and satellite datasets with Python and Tableau to deliver data-driven recommendations that supported farmers in over 10 rural regions.</li>
+                        <li>Established and implemented daily data ingestion and reporting workflows using Python (Pandas, sched) and SQL queries, cutting manual reporting time by 40%.</li>
+                        <li>Refined, pre-processed, and performed feature engineering on over 100K labeled datasets with Python (NumPy, Scikit-learn) to build features for ML-based flood prediction models, enhancing early warning accuracy by 30%.</li>
+                    </ul>
+                </div>
+
+                <div class="content-card work-card">
+                    <h4>Data Science & Analytics Intern - Healthcare IT | Manorama Infosolutions</h4>
+                    <div class="meta">
+                        <span>January 2023 - June 2023</span>
+                    </div>
+                    <ul>
+                        <li>Leveraged Python, SQL, and Power BI to analyze and visualize over 100K hospital and insurance records, uncovering patient care and operational inefficiencies.</li>
+                        <li>Streamlined data pipelines by performing data cleaning and preprocessing, reducing inconsistencies by 25% and enabling more reliable reporting for clinical teams.</li>
+                        <li>Constructed and tested predictive models (regression, random forest) for appointment scheduling, patient flow, and claims fraud detection, achieving up to 82% accuracy in pilot evaluations.</li>
+                    </ul>
+                </div>
+
+                <div class="content-card work-card">
+                    <h4>Data Science Intern | Comtranse Technology</h4>
+                    <div class="meta">
+                        <span>June 2022 - September 2022</span>
+                    </div>
+                    <ul>
+                        <li>Delivered and deployed over 5 interactive dashboards in Power BI to track regional sales performance and customer retention, enabling data-driven decision-making for senior management.</li>
+                        <li>Cleaned, standardized, and validated over 100K transaction records using SQL and Excel, improving reporting accuracy and reducing turnaround time by 30%.</li>
+                        <li>Streamlined weekly sales and customer reports with Python (Pandas, openpyxl), reducing manual reporting effort by 35%.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 style="text-align: center;">Projects</h2>
+            <div class="card-list">
+                <div class="content-card project-card">
+                    <h4>Quantitative Stock Forecasting System</h4>
+                    <p>Developed an end-to-end ML pipeline that extracts and cleans stock, sentiment, macro, and fundamental data from multiple APIs. Trained XGBoost/LSTM models for forecasting and delivered insights via Power BI dashboards.</p>
+                    <div class="skills-list">
+                        <span class="skill-tag">Python</span><span class="skill-tag">XGBoost</span><span class="skill-tag">Power BI</span>
+                    </div>
+                </div>
+
+                <div class="content-card project-card">
+                    <h4>Financial Stress & Default Risk Predictor</h4>
+                    <p>Devised a risk prediction system using satellite imagery and ESG NLP signals to forecast corporate distress and defaults. Automated data ingestion and ML modeling to visualize firm-level risk insights.</p>
+                    <div class="skills-list">
+                        <span class="skill-tag">Python</span><span class="skill-tag">XGBoost</span><span class="skill-tag">NLP</span>
+                    </div>
+                </div>
+
+                <div class="content-card project-card">
+                    <h4>Multi-Modal Brain Tumor Segmentation</h4>
+                    <p>Built a 3D U-Net pipeline on 1TB+ MRI data for multi-modal tumor segmentation. Managed the end-to-end ML pipeline, including data acquisition, preprocessing, and model evaluation.</p>
+                    <div class="skills-list">
+                        <span class="skill-tag">TensorFlow</span><span class="skill-tag">Python</span>
+                    </div>
+                </div>
+
+                <div class="content-card project-card">
+                    <h4>Predictive Analytics for Emergency Response</h4>
+                    <p>Queried over 5M records with SQL and modeled resource reallocation, simulating a 15% improvement in emergency response times.</p>
+                    <div class="skills-list">
+                        <span class="skill-tag">SQL</span><span class="skill-tag">Predictive Modeling</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications" class="section">
+        <div class="container">
+            <h2 style="text-align: center;">Certifications</h2>
+            <div class="card-list">
+                <div class="content-card">
+                    <h4>AWS AI Practitioner Certificate</h4>
+                </div>
+                <div class="content-card">
+                    <h4>Google Data Analytics Certificate</h4>
+                </div>
+                <div class="content-card">
+                    <h4>Microsoft Generative AI</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 style="text-align: center;">Contact</h2>
+            <div class="content-card" style="text-align: center;">
+                <p>Let's connect! You can reach me at:</p>
+                <div class="social-icons" style="margin-top: 2rem;">
+                    <a href="mailto:smeetdn14@gmail.com"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/YOUR-LINKEDIN" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/YOUR-GITHUB" target="_blank"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Smeet Nalawade. All rights reserved.</p>
+    </footer>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smeet Nalawade - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* --- General & Base Styles --- */
+        :root {
+            --primary-color: #ff6a88;
+            --secondary-color: #ff99ac;
+            --accent-color: #8ac0ff;
+            --card-bg: #ffffff;
+            --text-color: #333;
+            --dark-text: #000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: linear-gradient(135deg, #a7e0e7, #ff99ac, #ff6a88);
+            background-size: cover;
+            min-height: 100vh;
+        }
+
+        /* --- Layout & Structure --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: 4rem 0;
+        }
+
+        .content-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+            margin: 2rem 0;
+        }
+
+        /* --- Header & Navigation --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--dark-text);
+        }
+
+        .navbar-links a {
+            color: var(--dark-text);
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .navbar-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .navbar .contact-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .navbar .contact-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 6rem 0;
+            text-align: center;
+            flex-direction: column;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-text);
+        }
+
+        .hero h2 {
+            font-size: 1.2rem;
+            font-weight: normal;
+            margin-bottom: 2rem;
+            color: var(--text-color);
+        }
+
+        .hero-buttons .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0 0.5rem;
+        }
+
+        .hero-buttons .btn-download {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .hero-buttons .btn-contact {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            background-color: transparent;
+        }
+
+        .social-icons a {
+            color: var(--text-color);
+            margin: 1.5rem 0.75rem 0;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- About Section --- */
+        .about .content-card h3 {
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        /* --- Work Experience & Projects --- */
+        .work-card h4, .project-card h4 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .meta {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .meta span {
+            margin-right: 1rem;
+        }
+
+        .card-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .skill-tag {
+            background: #e0eaff;
+            color: #0056b3;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8em;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 1.5rem 0;
+            color: var(--text-color);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">Smeet Nalawade</div>
+        <div class="navbar-links">
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#certifications">Certifications</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <a href="#contact" class="contact-btn">Contact Me</a>
+    </nav>
+
+    <section class="section hero">
+        <div class="container">
+            <h1>Hi, I'm Smeet Nalawade</h1>
+            <h2>Master’s in Data Science | Aspiring Data Scientist</h2>
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-download">Download CV</a>
+                <a href="#contact" class="btn btn-contact">Contact Me</a>
+            </div>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/YOUR-LINKEDIN"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/YOUR-GITHUB"><i class="fab fa-github"></i></a>
+                <a href="mailto:smeetnalawade@email.com"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <div class="content-card">
+                <h3>Introduction</h3>
+                <p>
+                    I’m a Data Science Master’s student at Stevens Institute of Technology with hands-on experience in Machine Learning, Data Analysis, and Predictive Modeling. I enjoy solving complex problems and building data-driven solutions in fields like finance and healthcare. My professional journey combines technical expertise with a passion for problem-solving, and I have dedicated my career to developing data-driven solutions that solve real business problems.
+                </p>
+                <br>
+                <h3>My Skills</h3>
+                <div class="skills-list">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Machine Learning</span>
+                    <span class="skill-tag">Tableau</span>
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">Pandas</span>
+                    <span class="skill-tag">NumPy</span>
+                    <span class="skill-tag">TensorFlow</span>
+                    <span class="skill-tag">PyTorch</span>
+                    <span class="skill-tag">Scikit-learn</span>
+                    <span class="skill-tag">Azure</span>
+                    <span class="skill-tag">AWS</span>
+                    <span class="skill-tag">Snowflake</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 style="text-align: center;">Work Experience</h2>
+            <div class="card-list">
+                <div class="content-card work-card">
+                    <h4>Data Analyst | Veloce Tech-Insight</h4>
+                    <div class="meta">
+                        <span>August 2023 - July 2024</span>
+                    </div>
+                    <ul>
+                        <li>Developed real-time IoT data pipelines ingesting over 1M smart city sensor records into Databricks, Snowflake, SQL, and cloud platforms (AWS, Azure, GCP), enabling 24/7 monitoring and reducing false alarms by 25%.</li>
+                        <li>Collaborated on a government smart agriculture program, analyzing lot and satellite datasets with Python and Tableau to deliver data-driven recommendations that supported farmers in over 10 rural regions.</li>
+                        <li>Established and implemented daily data ingestion and reporting workflows using Python (Pandas, sched) and SQL queries, cutting manual reporting time by 40%.</li>
+                        <li>Refined, pre-processed, and performed feature engineering on over 100K labeled datasets with Python (NumPy, Scikit-learn) to build features for ML-based flood prediction models, enhancing early warning accuracy by 30%.</li>
+                    </ul>
+                </div>
+
+                <div class="content-card work-card">
+                    <h4>Data Science & Analytics Intern - Healthcare IT | Manorama Infosolutions</h4>
+                    <div class="meta">
+                        <span>January 2023 - June 2023</span>
+                    </div>
+                    <ul>
+                        <li>Leveraged Python, SQL, and Power BI to analyze and visualize over 100K hospital and insurance records, uncovering patient care and operational inefficiencies.</li>
+                        <li>Streamlined data pipelines by performing data cleaning and preprocessing, reducing inconsistencies by 25% and enabling more reliable reporting for clinical teams.</li>
+                        <li>Constructed and tested predictive models (regression, random forest) for appointment scheduling, patient flow, and claims fraud detection, achieving up to 82% accuracy in pilot evaluations.</li>
+                    </ul>
+                </div>
+
+                <div class="content-card work-card">
+                    <h4>Data Science Intern | Comtranse Technology</h4>
+                    <div class="meta">
+                        <span>June 2022 - September 2022</span>
+                    </div>
+                    <ul>
+                        <li>Delivered and deployed over 5 interactive dashboards in Power BI to track regional sales performance and customer retention, enabling data-driven decision-making for senior management.</li>
+                        <li>Cleaned, standardized, and validated over 100K transaction records using SQL and Excel, improving reporting accuracy and reducing turnaround time by 30%.</li>
+                        <li>Streamlined weekly sales and customer reports with Python (Pandas, openpyxl), reducing manual reporting effort by 35%.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 style="text-align: center;">Projects</h2>
+            <div class="card-list">
+                <div class="content-card project-card">
+                    <h4>Quantitative Stock Forecasting System</h4>
+                    <p>Developed an end-to-end ML pipeline that extracts and cleans stock, sentiment, macro, and fundamental data from multiple APIs. Trained XGBoost/LSTM models for forecasting and delivered insights via Power BI dashboards.</p>
+                    <div class="skills-list">
+                        <span class="skill-tag">Python</span><span class="skill-tag">XGBoost</span><span class="skill-tag">Power BI</span>
+                    </div>
+                </div>
+
+                <div class="content-card project-card">
+                    <h4>Financial Stress & Default Risk Predictor</h4>
+                    <p>Devised a risk prediction system using satellite imagery and ESG NLP signals to forecast corporate distress and defaults. Automated data ingestion and ML modeling to visualize firm-level risk insights.</p>
+                    <div class="skills-list">
+                        <span class="skill-tag">Python</span><span class="skill-tag">XGBoost</span><span class="skill-tag">NLP</span>
+                    </div>
+                </div>
+
+                <div class="content-card project-card">
+                    <h4>Multi-Modal Brain Tumor Segmentation</h4>
+                    <p>Built a 3D U-Net pipeline on 1TB+ MRI data for multi-modal tumor segmentation. Managed the end-to-end ML pipeline, including data acquisition, preprocessing, and model evaluation.</p>
+                    <div class="skills-list">
+                        <span class="skill-tag">TensorFlow</span><span class="skill-tag">Python</span>
+                    </div>
+                </div>
+
+                <div class="content-card project-card">
+                    <h4>Predictive Analytics for Emergency Response</h4>
+                    <p>Queried over 5M records with SQL and modeled resource reallocation, simulating a 15% improvement in emergency response times.</p>
+                    <div class="skills-list">
+                        <span class="skill-tag">SQL</span><span class="skill-tag">Predictive Modeling</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications" class="section">
+        <div class="container">
+            <h2 style="text-align: center;">Certifications</h2>
+            <div class="card-list">
+                <div class="content-card">
+                    <h4>AWS AI Practitioner Certificate</h4>
+                </div>
+                <div class="content-card">
+                    <h4>Google Data Analytics Certificate</h4>
+                </div>
+                <div class="content-card">
+                    <h4>Microsoft Generative AI</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 style="text-align: center;">Contact</h2>
+            <div class="content-card" style="text-align: center;">
+                <p>Let's connect! You can reach me at:</p>
+                <div class="social-icons" style="margin-top: 2rem;">
+                    <a href="mailto:smeetdn14@gmail.com"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/YOUR-LINKEDIN" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/YOUR-GITHUB" target="_blank"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Smeet Nalawade. All rights reserved.</p>
     </footer>
 
 </body>
