@@ -1,105 +1,1576 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Smeet Nalawade - Portfolio</title>
-  <style>
-    /* --- Reset & Base --- */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background: #f9f9f9; }
-    a { color: #0073e6; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smeet Nalawade - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* --- Reset & Base --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background: #f9f9f9; }
+        a { color: #0073e6; text-decoration: none; }
+        a:hover { text-decoration: underline; }
 
-    /* --- Layout --- */
-    header { background: #0073e6; color: white; padding: 2rem 1rem; text-align: center; }
-    header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
-    header p { font-size: 1.2rem; }
+        /* --- Layout --- */
+        header { background: #0073e6; color: white; padding: 2rem 1rem; text-align: center; }
+        header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        header p { font-size: 1.2rem; }
 
-    nav { margin-top: 1rem; }
-    nav a { margin: 0 1rem; font-weight: bold; color: white; }
+        nav { margin-top: 1rem; }
+        nav a { margin: 0 1rem; font-weight: bold; color: white; }
 
-    section { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
-    section h2 { margin-bottom: 1rem; color: #0073e6; }
+        section { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+        section h2 { margin-bottom: 1rem; color: #0073e6; }
+        
+        .section-content { display: grid; gap: 1.5rem; }
+        .grid-3-col { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+        .grid-2-col { grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); }
 
-    ul { list-style: none; }
-    ul li { margin: 0.5rem 0; }
+        ul { list-style: none; }
+        ul li { margin: 0.5rem 0; }
 
-    footer { text-align: center; background: #333; color: white; padding: 1rem; margin-top: 2rem; }
-    footer a { color: #ffcc00; }
+        footer { text-align: center; background: #333; color: white; padding: 1rem; margin-top: 2rem; }
+        footer a { color: #ffcc00; }
 
-    /* --- Card Styling --- */
-    .project-card {
-      background: white;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-  </style>
+        /* --- Card & Icon Styling --- */
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .card:hover { transform: translateY(-5px); }
+        .card h3 { color: #0056b3; margin-bottom: 0.5rem; }
+        .card .meta { font-size: 0.9em; color: #666; margin-bottom: 1rem; }
+        .card .meta span { margin-right: 1rem; }
+
+        .skills-list { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+        .skill-tag { background: #e0eaff; color: #0056b3; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8em; }
+
+        .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1rem; }
+        .social-link { font-size: 2rem; color: #0073e6; transition: color 0.3s; }
+        .social-link:hover { color: #0056b3; }
+        .social-link.github { color: #333; }
+        .social-link.linkedin { color: #0e76a8; }
+        .social-link.email { color: #d44638; }
+
+        .experience-card h4 { color: #555; font-size: 1.1em; margin-bottom: 0.5rem; }
+        .experience-card ul { margin-left: 1rem; }
+        .experience-card ul li { list-style: disc; margin-bottom: 0.5rem; }
+
+        .certificate-card img { max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 1rem; }
+    </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <h1>👋 Hi, I'm Smeet Nalawade</h1>
-    <p>Master’s in Data Science | Aspiring Data Scientist</p>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+    <header>
+        <h1>👋 Hi, I'm Smeet Nalawade</h1>
+        <p>Master’s in Data Science | Aspiring Data Scientist</p>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="#certifications">Certificates</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
 
-  <!-- About Section -->
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      I’m a Data Science Master’s student at Stevens Institute of Technology with 
-      hands-on experience in Machine Learning, Data Analysis, and Predictive Modeling.
-      I enjoy solving complex problems and building data-driven solutions in fields like 
-      finance and healthcare.
-    </p>
-  </section>
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="section-content grid-2-col">
+            <div class="card">
+                <h3>Bio</h3>
+                <p>
+                    I’m a Data Science Master’s student at Stevens Institute of Technology with
+                    hands-on experience in Machine Learning, Data Analysis, and Predictive Modeling.
+                    I enjoy solving complex problems and building data-driven solutions in fields like
+                    finance and healthcare.
+                </p>
+            </div>
+            <div class="card">
+                <h3>My Skills</h3>
+                <div class="skills-list">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Machine Learning</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Tableau</span>
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">R</span>
+                    <span class="skill-tag">NLP</span>
+                    <span class="skill-tag">Data Visualization</span>
+                    <span class="skill-tag">Predictive Modeling</span>
+                    <span class="skill-tag">Pandas</span>
+                    <span class="skill-tag">NumPy</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Projects Section -->
-  <section id="projects">
-    <h2>Projects</h2>
+    ---
 
-    <div class="project-card">
-      <h3>Movie Recommendation System</h3>
-      <p>Built a recommendation engine using SVD, k-NN, and cosine similarity on MovieLens dataset.</p>
-      <a href="#">View Project</a>
-    </div>
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="section-content grid-2-col">
+            <div class="card project-card">
+                <h3>Movie Recommendation System</h3>
+                <p>Built a recommendation engine using SVD, k-NN, and cosine similarity on MovieLens dataset.</p>
+                <div class="skills-list">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Pandas</span>
+                    <span class="skill-tag">Scikit-learn</span>
+                </div>
+                <br>
+                <a href="https://github.com/YOUR-PROJECT-REPO" target="_blank">View on GitHub</a> | <a href="#" target="_blank">Live Demo (if any)</a>
+            </div>
 
-    <div class="project-card">
-      <h3>Healthcare Data Analysis</h3>
-      <p>Applied PCA and classification models to analyze patient data and uncover health insights.</p>
-      <a href="#">View Project</a>
-    </div>
+            <div class="card project-card">
+                <h3>Healthcare Data Analysis</h3>
+                <p>Applied PCA and classification models to analyze patient data and uncover health insights.</p>
+                <div class="skills-list">
+                    <span class="skill-tag">R</span>
+                    <span class="skill-tag">PCA</span>
+                    <span class="skill-tag">Classification</span>
+                </div>
+                <br>
+                <a href="https://github.com/YOUR-PROJECT-REPO" target="_blank">View on GitHub</a> | <a href="#" target="_blank">Live Demo (if any)</a>
+            </div>
 
-    <div class="project-card">
-      <h3>Finance Analytics Dashboard</h3>
-      <p>Designed interactive dashboards to visualize financial performance and predict stock trends.</p>
-      <a href="#">View Project</a>
-    </div>
-  </section>
+            <div class="card project-card">
+                <h3>Finance Analytics Dashboard</h3>
+                <p>Designed interactive dashboards to visualize financial performance and predict stock trends.</p>
+                <div class="skills-list">
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Data Visualization</span>
+                </div>
+                <br>
+                <a href="https://github.com/YOUR-PROJECT-REPO" target="_blank">View on GitHub</a> | <a href="#" target="_blank">Live Demo (if any)</a>
+            </div>
+        </div>
+    </section>
 
-  <!-- Contact Section -->
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Let’s connect! 🚀</p>
-    <ul>
-      <li>Email: <a href="mailto:smeetnalawade@email.com">smeetnalawade@email.com</a></li>
-      <li>LinkedIn: <a href="https://www.linkedin.com/in/YOUR-LINKEDIN" target="_blank">linkedin.com/in/YOUR-LINKEDIN</a></li>
-      <li>GitHub: <a href="https://github.com/YOUR-GITHUB" target="_blank">github.com/YOUR-GITHUB</a></li>
-    </ul>
-  </section>
+    ---
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 Smeet Nalawade | Built with ❤️ using GitHub Pages</p>
-  </footer>
+    <section id="experience">
+        <h2>Work Experience</h2>
+        <div class="section-content">
+            <article class="card experience-card">
+                <h3>Data Analyst Intern</h3>
+                <div class="meta">
+                    <span>Company Name | City, State</span>
+                    <span>Jan 2023 - Present</span>
+                </div>
+                <ul>
+                    <li>Analyzed large datasets to identify key trends and metrics, improving reporting efficiency by 15%.</li>
+                    <li>Developed and maintained SQL queries to extract data for business intelligence dashboards.</li>
+                    <li>Collaborated with the product team to define data requirements for new features.</li>
+                </ul>
+            </article>
+
+            <article class="card experience-card">
+                <h3>Research Assistant</h3>
+                <div class="meta">
+                    <span>University Name | City, State</span>
+                    <span>Aug 2022 - Dec 2022</span>
+                </div>
+                <ul>
+                    <li>Assisted with research on predictive modeling, applying machine learning algorithms to healthcare data.</li>
+                    <li>Cleaned and pre-processed complex datasets using Python and Pandas.</li>
+                    <li>Presented findings to the research team, contributing to a published paper.</li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
+    ---
+
+    <section id="certifications">
+        <h2>Certifications</h2>
+        <div class="section-content grid-3-col">
+            <a href="https://www.coursera.org/verify/YOUR-CERT-ID" target="_blank" class="card certificate-card">
+                <h3>Google Data Analytics Professional Certificate</h3>
+                <p>Coursera</p>
+                </a>
+
+            <a href="https://www.udemy.com/certificate/YOUR-CERT-ID" target="_blank" class="card certificate-card">
+                <h3>Machine Learning A-Z™: Hands-On Python & R In Data Science</h3>
+                <p>Udemy</p>
+                </a>
+
+            <a href="https://www.datacamp.com/statement-of-accomplishment/YOUR-CERT-ID" target="_blank" class="card certificate-card">
+                <h3>Data Scientist with Python Track</h3>
+                <p>DataCamp</p>
+                </a>
+        </div>
+    </section>
+
+    ---
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Let’s connect! 🚀</p>
+        <div class="social-links">
+            <a href="mailto:smeetnalawade@email.com" class="social-link email" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/YOUR-LINKEDIN" target="_blank" class="social-link linkedin" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/YOUR-GITHUB" target="_blank" class="social-link github" title="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Smeet Nalawade | Built with ❤️ using GitHub Pages</p>
+    </footer>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smeet Nalawade - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* --- Reset & Base --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background: #f9f9f9; }
+        a { color: #0073e6; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* --- Layout --- */
+        header { background: #0073e6; color: white; padding: 2rem 1rem; text-align: center; }
+        header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        header p { font-size: 1.2rem; }
+
+        nav { margin-top: 1rem; }
+        nav a { margin: 0 1rem; font-weight: bold; color: white; }
+
+        section { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+        section h2 { margin-bottom: 1rem; color: #0073e6; }
+        
+        .section-content { display: grid; gap: 1.5rem; }
+        .grid-3-col { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+        .grid-2-col { grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); }
+
+        ul { list-style: none; }
+        ul li { margin: 0.5rem 0; }
+
+        footer { text-align: center; background: #333; color: white; padding: 1rem; margin-top: 2rem; }
+        footer a { color: #ffcc00; }
+
+        /* --- Card & Icon Styling --- */
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .card:hover { transform: translateY(-5px); }
+        .card h3 { color: #0056b3; margin-bottom: 0.5rem; }
+        .card .meta { font-size: 0.9em; color: #666; margin-bottom: 1rem; }
+        .card .meta span { margin-right: 1rem; }
+
+        .skills-list { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+        .skill-tag { background: #e0eaff; color: #0056b3; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8em; }
+
+        .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1rem; }
+        .social-link { font-size: 2rem; color: #0073e6; transition: color 0.3s; }
+        .social-link:hover { color: #0056b3; }
+        .social-link.github { color: #333; }
+        .social-link.linkedin { color: #0e76a8; }
+        .social-link.email { color: #d44638; }
+
+        .experience-card h4 { color: #555; font-size: 1.1em; margin-bottom: 0.5rem; }
+        .experience-card ul { margin-left: 1rem; }
+        .experience-card ul li { list-style: disc; margin-bottom: 0.5rem; }
+
+        .certificate-card img { max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 1rem; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>👋 Hi, I'm Smeet Nalawade</h1>
+        <p>Master’s in Data Science | Aspiring Data Scientist</p>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="#certifications">Certificates</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="section-content grid-2-col">
+            <div class="card">
+                <h3>Bio</h3>
+                <p>
+                    I’m a Data Science Master’s student at Stevens Institute of Technology with
+                    hands-on experience in Machine Learning, Data Analysis, and Predictive Modeling.
+                    I enjoy solving complex problems and building data-driven solutions in fields like
+                    finance and healthcare.
+                </p>
+            </div>
+            <div class="card">
+                <h3>My Skills</h3>
+                <div class="skills-list">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Machine Learning</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Tableau</span>
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">R</span>
+                    <span class="skill-tag">NLP</span>
+                    <span class="skill-tag">Data Visualization</span>
+                    <span class="skill-tag">Predictive Modeling</span>
+                    <span class="skill-tag">Pandas</span>
+                    <span class="skill-tag">NumPy</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    ---
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="section-content grid-2-col">
+            <div class="card project-card">
+                <h3>Movie Recommendation System</h3>
+                <p>Built a recommendation engine using SVD, k-NN, and cosine similarity on MovieLens dataset.</p>
+                <div class="skills-list">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Pandas</span>
+                    <span class="skill-tag">Scikit-learn</span>
+                </div>
+                <br>
+                <a href="https://github.com/YOUR-PROJECT-REPO" target="_blank">View on GitHub</a> | <a href="#" target="_blank">Live Demo (if any)</a>
+            </div>
+
+            <div class="card project-card">
+                <h3>Healthcare Data Analysis</h3>
+                <p>Applied PCA and classification models to analyze patient data and uncover health insights.</p>
+                <div class="skills-list">
+                    <span class="skill-tag">R</span>
+                    <span class="skill-tag">PCA</span>
+                    <span class="skill-tag">Classification</span>
+                </div>
+                <br>
+                <a href="https://github.com/YOUR-PROJECT-REPO" target="_blank">View on GitHub</a> | <a href="#" target="_blank">Live Demo (if any)</a>
+            </div>
+
+            <div class="card project-card">
+                <h3>Finance Analytics Dashboard</h3>
+                <p>Designed interactive dashboards to visualize financial performance and predict stock trends.</p>
+                <div class="skills-list">
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Data Visualization</span>
+                </div>
+                <br>
+                <a href="https://github.com/YOUR-PROJECT-REPO" target="_blank">View on GitHub</a> | <a href="#" target="_blank">Live Demo (if any)</a>
+            </div>
+        </div>
+    </section>
+
+    ---
+
+    <section id="experience">
+        <h2>Work Experience</h2>
+        <div class="section-content">
+            <article class="card experience-card">
+                <h3>Data Analyst Intern</h3>
+                <div class="meta">
+                    <span>Company Name | City, State</span>
+                    <span>Jan 2023 - Present</span>
+                </div>
+                <ul>
+                    <li>Analyzed large datasets to identify key trends and metrics, improving reporting efficiency by 15%.</li>
+                    <li>Developed and maintained SQL queries to extract data for business intelligence dashboards.</li>
+                    <li>Collaborated with the product team to define data requirements for new features.</li>
+                </ul>
+            </article>
+
+            <article class="card experience-card">
+                <h3>Research Assistant</h3>
+                <div class="meta">
+                    <span>University Name | City, State</span>
+                    <span>Aug 2022 - Dec 2022</span>
+                </div>
+                <ul>
+                    <li>Assisted with research on predictive modeling, applying machine learning algorithms to healthcare data.</li>
+                    <li>Cleaned and pre-processed complex datasets using Python and Pandas.</li>
+                    <li>Presented findings to the research team, contributing to a published paper.</li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
+    ---
+
+    <section id="certifications">
+        <h2>Certifications</h2>
+        <div class="section-content grid-3-col">
+            <a href="https://www.coursera.org/verify/YOUR-CERT-ID" target="_blank" class="card certificate-card">
+                <h3>Google Data Analytics Professional Certificate</h3>
+                <p>Coursera</p>
+                </a>
+
+            <a href="https://www.udemy.com/certificate/YOUR-CERT-ID" target="_blank" class="card certificate-card">
+                <h3>Machine Learning A-Z™: Hands-On Python & R In Data Science</h3>
+                <p>Udemy</p>
+                </a>
+
+            <a href="https://www.datacamp.com/statement-of-accomplishment/YOUR-CERT-ID" target="_blank" class="card certificate-card">
+                <h3>Data Scientist with Python Track</h3>
+                <p>DataCamp</p>
+                </a>
+        </div>
+    </section>
+
+    ---
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Let’s connect! 🚀</p>
+        <div class="social-links">
+            <a href="mailto:smeetnalawade@email.com" class="social-link email" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/YOUR-LINKEDIN" target="_blank" class="social-link linkedin" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/YOUR-GITHUB" target="_blank" class="social-link github" title="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Smeet Nalawade | Built with ❤️ using GitHub Pages</p>
+    </footer>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smeet Nalawade - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* --- Reset & Base --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background: #f9f9f9; }
+        a { color: #0073e6; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* --- Layout --- */
+        header { background: #0073e6; color: white; padding: 2rem 1rem; text-align: center; }
+        header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        header p { font-size: 1.2rem; }
+
+        nav { margin-top: 1rem; }
+        nav a { margin: 0 1rem; font-weight: bold; color: white; }
+
+        section { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+        section h2 { margin-bottom: 1rem; color: #0073e6; }
+        
+        .section-content { display: grid; gap: 1.5rem; }
+        .grid-3-col { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+        .grid-2-col { grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); }
+
+        ul { list-style: none; }
+        ul li { margin: 0.5rem 0; }
+
+        footer { text-align: center; background: #333; color: white; padding: 1rem; margin-top: 2rem; }
+        footer a { color: #ffcc00; }
+
+        /* --- Card & Icon Styling --- */
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .card:hover { transform: translateY(-5px); }
+        .card h3 { color: #0056b3; margin-bottom: 0.5rem; }
+        .card .meta { font-size: 0.9em; color: #666; margin-bottom: 1rem; }
+        .card .meta span { margin-right: 1rem; }
+
+        .skills-list { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+        .skill-tag { background: #e0eaff; color: #0056b3; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8em; }
+
+        .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1rem; }
+        .social-link { font-size: 2rem; color: #0073e6; transition: color 0.3s; }
+        .social-link:hover { color: #0056b3; }
+        .social-link.github { color: #333; }
+        .social-link.linkedin { color: #0e76a8; }
+        .social-link.email { color: #d44638; }
+
+        .experience-card h4 { color: #555; font-size: 1.1em; margin-bottom: 0.5rem; }
+        .experience-card ul { margin-left: 1rem; }
+        .experience-card ul li { list-style: disc; margin-bottom: 0.5rem; }
+
+        .certificate-card img { max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 1rem; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>👋 Hi, I'm Smeet Nalawade</h1>
+        <p>Master’s in Data Science | Aspiring Data Scientist</p>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="#certifications">Certificates</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="section-content grid-2-col">
+            <div class="card">
+                <h3>Bio</h3>
+                <p>
+                    I’m a Data Science Master’s student at Stevens Institute of Technology with
+                    hands-on experience in Machine Learning, Data Analysis, and Predictive Modeling.
+                    I enjoy solving complex problems and building data-driven solutions in fields like
+                    finance and healthcare.
+                </p>
+            </div>
+            <div class="card">
+                <h3>My Skills</h3>
+                <div class="skills-list">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Machine Learning</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Tableau</span>
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">R</span>
+                    <span class="skill-tag">NLP</span>
+                    <span class="skill-tag">Data Visualization</span>
+                    <span class="skill-tag">Predictive Modeling</span>
+                    <span class="skill-tag">Pandas</span>
+                    <span class="skill-tag">NumPy</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    ---
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="section-content grid-2-col">
+            <div class="card project-card">
+                <h3>Movie Recommendation System</h3>
+                <p>Built a recommendation engine using SVD, k-NN, and cosine similarity on MovieLens dataset.</p>
+                <div class="skills-list">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Pandas</span>
+                    <span class="skill-tag">Scikit-learn</span>
+                </div>
+                <br>
+                <a href="https://github.com/YOUR-PROJECT-REPO" target="_blank">View on GitHub</a> | <a href="#" target="_blank">Live Demo (if any)</a>
+            </div>
+
+            <div class="card project-card">
+                <h3>Healthcare Data Analysis</h3>
+                <p>Applied PCA and classification models to analyze patient data and uncover health insights.</p>
+                <div class="skills-list">
+                    <span class="skill-tag">R</span>
+                    <span class="skill-tag">PCA</span>
+                    <span class="skill-tag">Classification</span>
+                </div>
+                <br>
+                <a href="https://github.com/YOUR-PROJECT-REPO" target="_blank">View on GitHub</a> | <a href="#" target="_blank">Live Demo (if any)</a>
+            </div>
+
+            <div class="card project-card">
+                <h3>Finance Analytics Dashboard</h3>
+                <p>Designed interactive dashboards to visualize financial performance and predict stock trends.</p>
+                <div class="skills-list">
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Data Visualization</span>
+                </div>
+                <br>
+                <a href="https://github.com/YOUR-PROJECT-REPO" target="_blank">View on GitHub</a> | <a href="#" target="_blank">Live Demo (if any)</a>
+            </div>
+        </div>
+    </section>
+
+    ---
+
+    <section id="experience">
+        <h2>Work Experience</h2>
+        <div class="section-content">
+            <article class="card experience-card">
+                <h3>Data Analyst Intern</h3>
+                <div class="meta">
+                    <span>Company Name | City, State</span>
+                    <span>Jan 2023 - Present</span>
+                </div>
+                <ul>
+                    <li>Analyzed large datasets to identify key trends and metrics, improving reporting efficiency by 15%.</li>
+                    <li>Developed and maintained SQL queries to extract data for business intelligence dashboards.</li>
+                    <li>Collaborated with the product team to define data requirements for new features.</li>
+                </ul>
+            </article>
+
+            <article class="card experience-card">
+                <h3>Research Assistant</h3>
+                <div class="meta">
+                    <span>University Name | City, State</span>
+                    <span>Aug 2022 - Dec 2022</span>
+                </div>
+                <ul>
+                    <li>Assisted with research on predictive modeling, applying machine learning algorithms to healthcare data.</li>
+                    <li>Cleaned and pre-processed complex datasets using Python and Pandas.</li>
+                    <li>Presented findings to the research team, contributing to a published paper.</li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
+    ---
+
+    <section id="certifications">
+        <h2>Certifications</h2>
+        <div class="section-content grid-3-col">
+            <a href="https://www.coursera.org/verify/YOUR-CERT-ID" target="_blank" class="card certificate-card">
+                <h3>Google Data Analytics Professional Certificate</h3>
+                <p>Coursera</p>
+                </a>
+
+            <a href="https://www.udemy.com/certificate/YOUR-CERT-ID" target="_blank" class="card certificate-card">
+                <h3>Machine Learning A-Z™: Hands-On Python & R In Data Science</h3>
+                <p>Udemy</p>
+                </a>
+
+            <a href="https://www.datacamp.com/statement-of-accomplishment/YOUR-CERT-ID" target="_blank" class="card certificate-card">
+                <h3>Data Scientist with Python Track</h3>
+                <p>DataCamp</p>
+                </a>
+        </div>
+    </section>
+
+    ---
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Let’s connect! 🚀</p>
+        <div class="social-links">
+            <a href="mailto:smeetnalawade@email.com" class="social-link email" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/YOUR-LINKEDIN" target="_blank" class="social-link linkedin" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/YOUR-GITHUB" target="_blank" class="social-link github" title="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Smeet Nalawade | Built with ❤️ using GitHub Pages</p>
+    </footer>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smeet Nalawade - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* --- Reset & Base --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background: #f9f9f9; }
+        a { color: #0073e6; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* --- Layout --- */
+        header { background: #0073e6; color: white; padding: 2rem 1rem; text-align: center; }
+        header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        header p { font-size: 1.2rem; }
+
+        nav { margin-top: 1rem; }
+        nav a { margin: 0 1rem; font-weight: bold; color: white; }
+
+        section { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+        section h2 { margin-bottom: 1rem; color: #0073e6; }
+        
+        .section-content { display: grid; gap: 1.5rem; }
+        .grid-3-col { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+        .grid-2-col { grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); }
+
+        ul { list-style: none; }
+        ul li { margin: 0.5rem 0; }
+
+        footer { text-align: center; background: #333; color: white; padding: 1rem; margin-top: 2rem; }
+        footer a { color: #ffcc00; }
+
+        /* --- Card & Icon Styling --- */
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .card:hover { transform: translateY(-5px); }
+        .card h3 { color: #0056b3; margin-bottom: 0.5rem; }
+        .card .meta { font-size: 0.9em; color: #666; margin-bottom: 1rem; }
+        .card .meta span { margin-right: 1rem; }
+
+        .skills-list { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+        .skill-tag { background: #e0eaff; color: #0056b3; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8em; }
+
+        .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1rem; }
+        .social-link { font-size: 2rem; color: #0073e6; transition: color 0.3s; }
+        .social-link:hover { color: #0056b3; }
+        .social-link.github { color: #333; }
+        .social-link.linkedin { color: #0e76a8; }
+        .social-link.email { color: #d44638; }
+
+        .experience-card h4 { color: #555; font-size: 1.1em; margin-bottom: 0.5rem; }
+        .experience-card ul { margin-left: 1rem; }
+        .experience-card ul li { list-style: disc; margin-bottom: 0.5rem; }
+
+        .certificate-card img { max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 1rem; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>👋 Hi, I'm Smeet Nalawade</h1>
+        <p>Master’s in Data Science | Aspiring Data Scientist</p>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="#certifications">Certificates</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="section-content grid-2-col">
+            <div class="card">
+                <h3>Bio</h3>
+                <p>
+                    I’m a Data Science Master’s student at Stevens Institute of Technology with
+                    hands-on experience in Machine Learning, Data Analysis, and Predictive Modeling.
+                    I enjoy solving complex problems and building data-driven solutions in fields like
+                    finance and healthcare.
+                </p>
+            </div>
+            <div class="card">
+                <h3>My Skills</h3>
+                <div class="skills-list">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Machine Learning</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Tableau</span>
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">R</span>
+                    <span class="skill-tag">NLP</span>
+                    <span class="skill-tag">Data Visualization</span>
+                    <span class="skill-tag">Predictive Modeling</span>
+                    <span class="skill-tag">Pandas</span>
+                    <span class="skill-tag">NumPy</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    ---
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="section-content grid-2-col">
+            <div class="card project-card">
+                <h3>Movie Recommendation System</h3>
+                <p>Built a recommendation engine using SVD, k-NN, and cosine similarity on MovieLens dataset.</p>
+                <div class="skills-list">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Pandas</span>
+                    <span class="skill-tag">Scikit-learn</span>
+                </div>
+                <br>
+                <a href="https://github.com/YOUR-PROJECT-REPO" target="_blank">View on GitHub</a> | <a href="#" target="_blank">Live Demo (if any)</a>
+            </div>
+
+            <div class="card project-card">
+                <h3>Healthcare Data Analysis</h3>
+                <p>Applied PCA and classification models to analyze patient data and uncover health insights.</p>
+                <div class="skills-list">
+                    <span class="skill-tag">R</span>
+                    <span class="skill-tag">PCA</span>
+                    <span class="skill-tag">Classification</span>
+                </div>
+                <br>
+                <a href="https://github.com/YOUR-PROJECT-REPO" target="_blank">View on GitHub</a> | <a href="#" target="_blank">Live Demo (if any)</a>
+            </div>
+
+            <div class="card project-card">
+                <h3>Finance Analytics Dashboard</h3>
+                <p>Designed interactive dashboards to visualize financial performance and predict stock trends.</p>
+                <div class="skills-list">
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Data Visualization</span>
+                </div>
+                <br>
+                <a href="https://github.com/YOUR-PROJECT-REPO" target="_blank">View on GitHub</a> | <a href="#" target="_blank">Live Demo (if any)</a>
+            </div>
+        </div>
+    </section>
+
+    ---
+
+    <section id="experience">
+        <h2>Work Experience</h2>
+        <div class="section-content">
+            <article class="card experience-card">
+                <h3>Data Analyst Intern</h3>
+                <div class="meta">
+                    <span>Company Name | City, State</span>
+                    <span>Jan 2023 - Present</span>
+                </div>
+                <ul>
+                    <li>Analyzed large datasets to identify key trends and metrics, improving reporting efficiency by 15%.</li>
+                    <li>Developed and maintained SQL queries to extract data for business intelligence dashboards.</li>
+                    <li>Collaborated with the product team to define data requirements for new features.</li>
+                </ul>
+            </article>
+
+            <article class="card experience-card">
+                <h3>Research Assistant</h3>
+                <div class="meta">
+                    <span>University Name | City, State</span>
+                    <span>Aug 2022 - Dec 2022</span>
+                </div>
+                <ul>
+                    <li>Assisted with research on predictive modeling, applying machine learning algorithms to healthcare data.</li>
+                    <li>Cleaned and pre-processed complex datasets using Python and Pandas.</li>
+                    <li>Presented findings to the research team, contributing to a published paper.</li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
+    ---
+
+    <section id="certifications">
+        <h2>Certifications</h2>
+        <div class="section-content grid-3-col">
+            <a href="https://www.coursera.org/verify/YOUR-CERT-ID" target="_blank" class="card certificate-card">
+                <h3>Google Data Analytics Professional Certificate</h3>
+                <p>Coursera</p>
+                </a>
+
+            <a href="https://www.udemy.com/certificate/YOUR-CERT-ID" target="_blank" class="card certificate-card">
+                <h3>Machine Learning A-Z™: Hands-On Python & R In Data Science</h3>
+                <p>Udemy</p>
+                </a>
+
+            <a href="https://www.datacamp.com/statement-of-accomplishment/YOUR-CERT-ID" target="_blank" class="card certificate-card">
+                <h3>Data Scientist with Python Track</h3>
+                <p>DataCamp</p>
+                </a>
+        </div>
+    </section>
+
+    ---
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Let’s connect! 🚀</p>
+        <div class="social-links">
+            <a href="mailto:smeetnalawade@email.com" class="social-link email" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/YOUR-LINKEDIN" target="_blank" class="social-link linkedin" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/YOUR-GITHUB" target="_blank" class="social-link github" title="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Smeet Nalawade | Built with ❤️ using GitHub Pages</p>
+    </footer>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smeet Nalawade - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* --- Reset & Base --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background: #f9f9f9; }
+        a { color: #0073e6; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* --- Layout --- */
+        header { background: #0073e6; color: white; padding: 2rem 1rem; text-align: center; }
+        header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        header p { font-size: 1.2rem; }
+
+        nav { margin-top: 1rem; }
+        nav a { margin: 0 1rem; font-weight: bold; color: white; }
+
+        section { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+        section h2 { margin-bottom: 1rem; color: #0073e6; }
+        
+        .section-content { display: grid; gap: 1.5rem; }
+        .grid-3-col { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+        .grid-2-col { grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); }
+
+        ul { list-style: none; }
+        ul li { margin: 0.5rem 0; }
+
+        footer { text-align: center; background: #333; color: white; padding: 1rem; margin-top: 2rem; }
+        footer a { color: #ffcc00; }
+
+        /* --- Card & Icon Styling --- */
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .card:hover { transform: translateY(-5px); }
+        .card h3 { color: #0056b3; margin-bottom: 0.5rem; }
+        .card .meta { font-size: 0.9em; color: #666; margin-bottom: 1rem; }
+        .card .meta span { margin-right: 1rem; }
+
+        .skills-list { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+        .skill-tag { background: #e0eaff; color: #0056b3; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8em; }
+
+        .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1rem; }
+        .social-link { font-size: 2rem; color: #0073e6; transition: color 0.3s; }
+        .social-link:hover { color: #0056b3; }
+        .social-link.github { color: #333; }
+        .social-link.linkedin { color: #0e76a8; }
+        .social-link.email { color: #d44638; }
+
+        .experience-card h4 { color: #555; font-size: 1.1em; margin-bottom: 0.5rem; }
+        .experience-card ul { margin-left: 1rem; }
+        .experience-card ul li { list-style: disc; margin-bottom: 0.5rem; }
+
+        .certificate-card img { max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 1rem; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>👋 Hi, I'm Smeet Nalawade</h1>
+        <p>Master’s in Data Science | Aspiring Data Scientist</p>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="#certifications">Certificates</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="section-content grid-2-col">
+            <div class="card">
+                <h3>Bio</h3>
+                <p>
+                    I’m a Data Science Master’s student at Stevens Institute of Technology with
+                    hands-on experience in Machine Learning, Data Analysis, and Predictive Modeling.
+                    I enjoy solving complex problems and building data-driven solutions in fields like
+                    finance and healthcare.
+                </p>
+            </div>
+            <div class="card">
+                <h3>My Skills</h3>
+                <div class="skills-list">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Machine Learning</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Tableau</span>
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">R</span>
+                    <span class="skill-tag">NLP</span>
+                    <span class="skill-tag">Data Visualization</span>
+                    <span class="skill-tag">Predictive Modeling</span>
+                    <span class="skill-tag">Pandas</span>
+                    <span class="skill-tag">NumPy</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    ---
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="section-content grid-2-col">
+            <div class="card project-card">
+                <h3>Movie Recommendation System</h3>
+                <p>Built a recommendation engine using SVD, k-NN, and cosine similarity on MovieLens dataset.</p>
+                <div class="skills-list">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Pandas</span>
+                    <span class="skill-tag">Scikit-learn</span>
+                </div>
+                <br>
+                <a href="https://github.com/YOUR-PROJECT-REPO" target="_blank">View on GitHub</a> | <a href="#" target="_blank">Live Demo (if any)</a>
+            </div>
+
+            <div class="card project-card">
+                <h3>Healthcare Data Analysis</h3>
+                <p>Applied PCA and classification models to analyze patient data and uncover health insights.</p>
+                <div class="skills-list">
+                    <span class="skill-tag">R</span>
+                    <span class="skill-tag">PCA</span>
+                    <span class="skill-tag">Classification</span>
+                </div>
+                <br>
+                <a href="https://github.com/YOUR-PROJECT-REPO" target="_blank">View on GitHub</a> | <a href="#" target="_blank">Live Demo (if any)</a>
+            </div>
+
+            <div class="card project-card">
+                <h3>Finance Analytics Dashboard</h3>
+                <p>Designed interactive dashboards to visualize financial performance and predict stock trends.</p>
+                <div class="skills-list">
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Data Visualization</span>
+                </div>
+                <br>
+                <a href="https://github.com/YOUR-PROJECT-REPO" target="_blank">View on GitHub</a> | <a href="#" target="_blank">Live Demo (if any)</a>
+            </div>
+        </div>
+    </section>
+
+    ---
+
+    <section id="experience">
+        <h2>Work Experience</h2>
+        <div class="section-content">
+            <article class="card experience-card">
+                <h3>Data Analyst Intern</h3>
+                <div class="meta">
+                    <span>Company Name | City, State</span>
+                    <span>Jan 2023 - Present</span>
+                </div>
+                <ul>
+                    <li>Analyzed large datasets to identify key trends and metrics, improving reporting efficiency by 15%.</li>
+                    <li>Developed and maintained SQL queries to extract data for business intelligence dashboards.</li>
+                    <li>Collaborated with the product team to define data requirements for new features.</li>
+                </ul>
+            </article>
+
+            <article class="card experience-card">
+                <h3>Research Assistant</h3>
+                <div class="meta">
+                    <span>University Name | City, State</span>
+                    <span>Aug 2022 - Dec 2022</span>
+                </div>
+                <ul>
+                    <li>Assisted with research on predictive modeling, applying machine learning algorithms to healthcare data.</li>
+                    <li>Cleaned and pre-processed complex datasets using Python and Pandas.</li>
+                    <li>Presented findings to the research team, contributing to a published paper.</li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
+    ---
+
+    <section id="certifications">
+        <h2>Certifications</h2>
+        <div class="section-content grid-3-col">
+            <a href="https://www.coursera.org/verify/YOUR-CERT-ID" target="_blank" class="card certificate-card">
+                <h3>Google Data Analytics Professional Certificate</h3>
+                <p>Coursera</p>
+                </a>
+
+            <a href="https://www.udemy.com/certificate/YOUR-CERT-ID" target="_blank" class="card certificate-card">
+                <h3>Machine Learning A-Z™: Hands-On Python & R In Data Science</h3>
+                <p>Udemy</p>
+                </a>
+
+            <a href="https://www.datacamp.com/statement-of-accomplishment/YOUR-CERT-ID" target="_blank" class="card certificate-card">
+                <h3>Data Scientist with Python Track</h3>
+                <p>DataCamp</p>
+                </a>
+        </div>
+    </section>
+
+    ---
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Let’s connect! 🚀</p>
+        <div class="social-links">
+            <a href="mailto:smeetnalawade@email.com" class="social-link email" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/YOUR-LINKEDIN" target="_blank" class="social-link linkedin" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/YOUR-GITHUB" target="_blank" class="social-link github" title="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Smeet Nalawade | Built with ❤️ using GitHub Pages</p>
+    </footer>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smeet Nalawade - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* --- Reset & Base --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background: #f9f9f9; }
+        a { color: #0073e6; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* --- Layout --- */
+        header { background: #0073e6; color: white; padding: 2rem 1rem; text-align: center; }
+        header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        header p { font-size: 1.2rem; }
+
+        nav { margin-top: 1rem; }
+        nav a { margin: 0 1rem; font-weight: bold; color: white; }
+
+        section { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+        section h2 { margin-bottom: 1rem; color: #0073e6; }
+        
+        .section-content { display: grid; gap: 1.5rem; }
+        .grid-3-col { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+        .grid-2-col { grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); }
+
+        ul { list-style: none; }
+        ul li { margin: 0.5rem 0; }
+
+        footer { text-align: center; background: #333; color: white; padding: 1rem; margin-top: 2rem; }
+        footer a { color: #ffcc00; }
+
+        /* --- Card & Icon Styling --- */
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .card:hover { transform: translateY(-5px); }
+        .card h3 { color: #0056b3; margin-bottom: 0.5rem; }
+        .card .meta { font-size: 0.9em; color: #666; margin-bottom: 1rem; }
+        .card .meta span { margin-right: 1rem; }
+
+        .skills-list { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+        .skill-tag { background: #e0eaff; color: #0056b3; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8em; }
+
+        .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1rem; }
+        .social-link { font-size: 2rem; color: #0073e6; transition: color 0.3s; }
+        .social-link:hover { color: #0056b3; }
+        .social-link.github { color: #333; }
+        .social-link.linkedin { color: #0e76a8; }
+        .social-link.email { color: #d44638; }
+
+        .experience-card h4 { color: #555; font-size: 1.1em; margin-bottom: 0.5rem; }
+        .experience-card ul { margin-left: 1rem; }
+        .experience-card ul li { list-style: disc; margin-bottom: 0.5rem; }
+
+        .certificate-card img { max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 1rem; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>👋 Hi, I'm Smeet Nalawade</h1>
+        <p>Master’s in Data Science | Aspiring Data Scientist</p>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="#certifications">Certificates</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="section-content grid-2-col">
+            <div class="card">
+                <h3>Bio</h3>
+                <p>
+                    I’m a Data Science Master’s student at Stevens Institute of Technology with
+                    hands-on experience in Machine Learning, Data Analysis, and Predictive Modeling.
+                    I enjoy solving complex problems and building data-driven solutions in fields like
+                    finance and healthcare.
+                </p>
+            </div>
+            <div class="card">
+                <h3>My Skills</h3>
+                <div class="skills-list">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Machine Learning</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Tableau</span>
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">R</span>
+                    <span class="skill-tag">NLP</span>
+                    <span class="skill-tag">Data Visualization</span>
+                    <span class="skill-tag">Predictive Modeling</span>
+                    <span class="skill-tag">Pandas</span>
+                    <span class="skill-tag">NumPy</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    ---
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="section-content grid-2-col">
+            <div class="card project-card">
+                <h3>Movie Recommendation System</h3>
+                <p>Built a recommendation engine using SVD, k-NN, and cosine similarity on MovieLens dataset.</p>
+                <div class="skills-list">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Pandas</span>
+                    <span class="skill-tag">Scikit-learn</span>
+                </div>
+                <br>
+                <a href="https://github.com/YOUR-PROJECT-REPO" target="_blank">View on GitHub</a> | <a href="#" target="_blank">Live Demo (if any)</a>
+            </div>
+
+            <div class="card project-card">
+                <h3>Healthcare Data Analysis</h3>
+                <p>Applied PCA and classification models to analyze patient data and uncover health insights.</p>
+                <div class="skills-list">
+                    <span class="skill-tag">R</span>
+                    <span class="skill-tag">PCA</span>
+                    <span class="skill-tag">Classification</span>
+                </div>
+                <br>
+                <a href="https://github.com/YOUR-PROJECT-REPO" target="_blank">View on GitHub</a> | <a href="#" target="_blank">Live Demo (if any)</a>
+            </div>
+
+            <div class="card project-card">
+                <h3>Finance Analytics Dashboard</h3>
+                <p>Designed interactive dashboards to visualize financial performance and predict stock trends.</p>
+                <div class="skills-list">
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Data Visualization</span>
+                </div>
+                <br>
+                <a href="https://github.com/YOUR-PROJECT-REPO" target="_blank">View on GitHub</a> | <a href="#" target="_blank">Live Demo (if any)</a>
+            </div>
+        </div>
+    </section>
+
+    ---
+
+    <section id="experience">
+        <h2>Work Experience</h2>
+        <div class="section-content">
+            <article class="card experience-card">
+                <h3>Data Analyst Intern</h3>
+                <div class="meta">
+                    <span>Company Name | City, State</span>
+                    <span>Jan 2023 - Present</span>
+                </div>
+                <ul>
+                    <li>Analyzed large datasets to identify key trends and metrics, improving reporting efficiency by 15%.</li>
+                    <li>Developed and maintained SQL queries to extract data for business intelligence dashboards.</li>
+                    <li>Collaborated with the product team to define data requirements for new features.</li>
+                </ul>
+            </article>
+
+            <article class="card experience-card">
+                <h3>Research Assistant</h3>
+                <div class="meta">
+                    <span>University Name | City, State</span>
+                    <span>Aug 2022 - Dec 2022</span>
+                </div>
+                <ul>
+                    <li>Assisted with research on predictive modeling, applying machine learning algorithms to healthcare data.</li>
+                    <li>Cleaned and pre-processed complex datasets using Python and Pandas.</li>
+                    <li>Presented findings to the research team, contributing to a published paper.</li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
+    ---
+
+    <section id="certifications">
+        <h2>Certifications</h2>
+        <div class="section-content grid-3-col">
+            <a href="https://www.coursera.org/verify/YOUR-CERT-ID" target="_blank" class="card certificate-card">
+                <h3>Google Data Analytics Professional Certificate</h3>
+                <p>Coursera</p>
+                </a>
+
+            <a href="https://www.udemy.com/certificate/YOUR-CERT-ID" target="_blank" class="card certificate-card">
+                <h3>Machine Learning A-Z™: Hands-On Python & R In Data Science</h3>
+                <p>Udemy</p>
+                </a>
+
+            <a href="https://www.datacamp.com/statement-of-accomplishment/YOUR-CERT-ID" target="_blank" class="card certificate-card">
+                <h3>Data Scientist with Python Track</h3>
+                <p>DataCamp</p>
+                </a>
+        </div>
+    </section>
+
+    ---
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Let’s connect! 🚀</p>
+        <div class="social-links">
+            <a href="mailto:smeetnalawade@email.com" class="social-link email" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/YOUR-LINKEDIN" target="_blank" class="social-link linkedin" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/YOUR-GITHUB" target="_blank" class="social-link github" title="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Smeet Nalawade | Built with ❤️ using GitHub Pages</p>
+    </footer>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smeet Nalawade - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* --- Reset & Base --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background: #f9f9f9; }
+        a { color: #0073e6; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* --- Layout --- */
+        header { background: #0073e6; color: white; padding: 2rem 1rem; text-align: center; }
+        header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        header p { font-size: 1.2rem; }
+
+        nav { margin-top: 1rem; }
+        nav a { margin: 0 1rem; font-weight: bold; color: white; }
+
+        section { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+        section h2 { margin-bottom: 1rem; color: #0073e6; }
+        
+        .section-content { display: grid; gap: 1.5rem; }
+        .grid-3-col { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+        .grid-2-col { grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); }
+
+        ul { list-style: none; }
+        ul li { margin: 0.5rem 0; }
+
+        footer { text-align: center; background: #333; color: white; padding: 1rem; margin-top: 2rem; }
+        footer a { color: #ffcc00; }
+
+        /* --- Card & Icon Styling --- */
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .card:hover { transform: translateY(-5px); }
+        .card h3 { color: #0056b3; margin-bottom: 0.5rem; }
+        .card .meta { font-size: 0.9em; color: #666; margin-bottom: 1rem; }
+        .card .meta span { margin-right: 1rem; }
+
+        .skills-list { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+        .skill-tag { background: #e0eaff; color: #0056b3; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8em; }
+
+        .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1rem; }
+        .social-link { font-size: 2rem; color: #0073e6; transition: color 0.3s; }
+        .social-link:hover { color: #0056b3; }
+        .social-link.github { color: #333; }
+        .social-link.linkedin { color: #0e76a8; }
+        .social-link.email { color: #d44638; }
+
+        .experience-card h4 { color: #555; font-size: 1.1em; margin-bottom: 0.5rem; }
+        .experience-card ul { margin-left: 1rem; }
+        .experience-card ul li { list-style: disc; margin-bottom: 0.5rem; }
+
+        .certificate-card img { max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 1rem; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>👋 Hi, I'm Smeet Nalawade</h1>
+        <p>Master’s in Data Science | Aspiring Data Scientist</p>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="#certifications">Certificates</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="section-content grid-2-col">
+            <div class="card">
+                <h3>Bio</h3>
+                <p>
+                    I’m a Data Science Master’s student at Stevens Institute of Technology with
+                    hands-on experience in Machine Learning, Data Analysis, and Predictive Modeling.
+                    I enjoy solving complex problems and building data-driven solutions in fields like
+                    finance and healthcare.
+                </p>
+            </div>
+            <div class="card">
+                <h3>My Skills</h3>
+                <div class="skills-list">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Machine Learning</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Tableau</span>
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">R</span>
+                    <span class="skill-tag">NLP</span>
+                    <span class="skill-tag">Data Visualization</span>
+                    <span class="skill-tag">Predictive Modeling</span>
+                    <span class="skill-tag">Pandas</span>
+                    <span class="skill-tag">NumPy</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    ---
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="section-content grid-2-col">
+            <div class="card project-card">
+                <h3>Movie Recommendation System</h3>
+                <p>Built a recommendation engine using SVD, k-NN, and cosine similarity on MovieLens dataset.</p>
+                <div class="skills-list">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Pandas</span>
+                    <span class="skill-tag">Scikit-learn</span>
+                </div>
+                <br>
+                <a href="https://github.com/YOUR-PROJECT-REPO" target="_blank">View on GitHub</a> | <a href="#" target="_blank">Live Demo (if any)</a>
+            </div>
+
+            <div class="card project-card">
+                <h3>Healthcare Data Analysis</h3>
+                <p>Applied PCA and classification models to analyze patient data and uncover health insights.</p>
+                <div class="skills-list">
+                    <span class="skill-tag">R</span>
+                    <span class="skill-tag">PCA</span>
+                    <span class="skill-tag">Classification</span>
+                </div>
+                <br>
+                <a href="https://github.com/YOUR-PROJECT-REPO" target="_blank">View on GitHub</a> | <a href="#" target="_blank">Live Demo (if any)</a>
+            </div>
+
+            <div class="card project-card">
+                <h3>Finance Analytics Dashboard</h3>
+                <p>Designed interactive dashboards to visualize financial performance and predict stock trends.</p>
+                <div class="skills-list">
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Data Visualization</span>
+                </div>
+                <br>
+                <a href="https://github.com/YOUR-PROJECT-REPO" target="_blank">View on GitHub</a> | <a href="#" target="_blank">Live Demo (if any)</a>
+            </div>
+        </div>
+    </section>
+
+    ---
+
+    <section id="experience">
+        <h2>Work Experience</h2>
+        <div class="section-content">
+            <article class="card experience-card">
+                <h3>Data Analyst Intern</h3>
+                <div class="meta">
+                    <span>Company Name | City, State</span>
+                    <span>Jan 2023 - Present</span>
+                </div>
+                <ul>
+                    <li>Analyzed large datasets to identify key trends and metrics, improving reporting efficiency by 15%.</li>
+                    <li>Developed and maintained SQL queries to extract data for business intelligence dashboards.</li>
+                    <li>Collaborated with the product team to define data requirements for new features.</li>
+                </ul>
+            </article>
+
+            <article class="card experience-card">
+                <h3>Research Assistant</h3>
+                <div class="meta">
+                    <span>University Name | City, State</span>
+                    <span>Aug 2022 - Dec 2022</span>
+                </div>
+                <ul>
+                    <li>Assisted with research on predictive modeling, applying machine learning algorithms to healthcare data.</li>
+                    <li>Cleaned and pre-processed complex datasets using Python and Pandas.</li>
+                    <li>Presented findings to the research team, contributing to a published paper.</li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
+    ---
+
+    <section id="certifications">
+        <h2>Certifications</h2>
+        <div class="section-content grid-3-col">
+            <a href="https://www.coursera.org/verify/YOUR-CERT-ID" target="_blank" class="card certificate-card">
+                <h3>Google Data Analytics Professional Certificate</h3>
+                <p>Coursera</p>
+                </a>
+
+            <a href="https://www.udemy.com/certificate/YOUR-CERT-ID" target="_blank" class="card certificate-card">
+                <h3>Machine Learning A-Z™: Hands-On Python & R In Data Science</h3>
+                <p>Udemy</p>
+                </a>
+
+            <a href="https://www.datacamp.com/statement-of-accomplishment/YOUR-CERT-ID" target="_blank" class="card certificate-card">
+                <h3>Data Scientist with Python Track</h3>
+                <p>DataCamp</p>
+                </a>
+        </div>
+    </section>
+
+    ---
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Let’s connect! 🚀</p>
+        <div class="social-links">
+            <a href="mailto:smeetnalawade@email.com" class="social-link email" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/YOUR-LINKEDIN" target="_blank" class="social-link linkedin" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/YOUR-GITHUB" target="_blank" class="social-link github" title="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Smeet Nalawade | Built with ❤️ using GitHub Pages</p>
+    </footer>
 
 </body>
 </html>
