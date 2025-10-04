@@ -113,36 +113,49 @@
             flex-basis: 50%;
         }
 
-        .hero-image-container {
-            position: relative;
-            width: 300px; /* Adjust size as needed */
-            height: 300px;
-        }
         
-        .hero-image-container .mugshot {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%; /* Makes the image circular */
-            z-index: 2;
-        }
-        
-        .hero-image-container::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.5); /* White banner with transparency */
-            border-radius: 15px;
-            transform: rotate(-10deg); /* Tilt the banner slightly */
-            top: 15px;
-            left: 15px;
-            z-index: 1;
-        }
+        /* --- Hero Section --- */
+/* (Keep the rest of your .hero, .hero-content styles as they are) */
 
+.hero-image-container {
+    position: relative;
+    /* Adjust size as needed, making it slightly larger than the image */
+    width: 320px; 
+    height: 320px;
+    /* This margin helps center the image block visually if needed */
+    margin-right: 2rem; 
+}
+
+.hero-image-container .mugshot {
+    position: absolute;
+    /* Center the image within its container */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    
+    width: 250px; /* Actual size of the circular image */
+    height: 250px;
+    object-fit: cover;
+    border-radius: 50%; /* Makes the image circular */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2); /* Added a subtle shadow */
+    z-index: 2;
+    /* Ensure the image is visible */
+    display: block; 
+}
+
+/* This creates the tilted background 'banner' effect */
+.hero-image-container::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.7); /* White banner with transparency */
+    border-radius: 20px;
+    transform: rotate(-10deg); /* Tilt the banner slightly */
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
 
         .hero h1 {
             font-size: 3rem;
@@ -820,5 +833,6 @@ Right now, I’m diving into projects in finance and healthcare, but my curiosit
 </script>
 </body>
 </html>
+
 
 
